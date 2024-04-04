@@ -186,6 +186,7 @@ p {
 
 .modal-image {
   width: 100%;
+  object-fit: cover;
 }
 
 .modal .form-control {
@@ -207,5 +208,9 @@ p {
 @media (max-width: 575.98px) {
   .movie-card-image {
     height: unset;
+  }
+
+  .modal-image{
+    width: 200px;
   }
 }

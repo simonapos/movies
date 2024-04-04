@@ -37,7 +37,7 @@ function displayMovies(moviesData) {
 function displayMovieInfo(movie) {
   $("#movieInfoBody").html(`
     <div class="row gx-5">
-        <div class="col-md-6">
+        <div class="col-md-6 d-flex justify-content-center d-sm-block">
             <img class="modal-image" src="${movie.image}" />        
         </div>
         <div class="col-md-6">
