@@ -2,6 +2,7 @@
 
 ## Description
 Movie Finder is a responsive movie landing page created using HTML, CSS, Bootstrap 5,  and Javascript/jQuery. It showcases movie posters with details and allows users to filter movies by genre. The project also integrates an API for fetching movie quotes.
+**[View Live Demo](https://simonapos.github.io/movies/)**
 
 ## Features
 - Responsive design using Bootstrap 5 for optimal viewing across devices.
