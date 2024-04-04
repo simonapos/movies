@@ -1,0 +1,211 @@
+:root {
+  --primary-color: rgba(56, 77, 89, 1);
+  --primary-color-dark: rgba(31, 41, 49, 1);
+  --secondary-color: rgb(248, 142, 1);
+  --secondary-color-dark: rgb(198, 115, 6);
+  --green-color: rgb(36, 159, 129);
+}
+
+body {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  background: var(--primary-color);
+  background: linear-gradient(
+    90deg,
+    var(--primary-color-dark) 0%,
+    var(--primary-color) 65%
+  );
+  font-family: "Cabin", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color-dark);
+  border-radius: 6px;
+}
+
+h1 {
+  color: white;
+  letter-spacing: 1.5px;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Buttons */
+
+.btn-orange {
+  color: white;
+  border-color: var(--secondary-color);
+  background-color: var(--secondary-color);
+  background: linear-gradient(
+    180deg,
+    var(--secondary-color) 0%,
+    var(--secondary-color-dark) 70%
+  );
+  font-weight: 500;
+}
+
+.btn-orange:hover {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+  background: transparent;
+}
+
+.btn-outline-orange {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+.btn-outline-orange:focus {
+  box-shadow: 0 0 0 0.25rem rgba(219, 170, 9, 0.5);
+}
+
+.btn-outline-orange:hover {
+  color: white;
+  border-color: var(--secondary-color);
+  background: var(--secondary-color);
+  background: linear-gradient(
+    180deg,
+    var(--secondary-color) 0%,
+    var(--secondary-color-dark) 70%
+  );
+}
+
+/* Movie Cards */
+
+.card-animation {
+  opacity: 0;
+  animation: slideIn 0.6s ease-out forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.movie-card {
+    transition: box-shadow 0.7s;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.movie-card:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.movie-card:hover img {
+  transform: scale(1.05);
+}
+
+.movie-card-image {
+  overflow: hidden;
+  height: 420px;
+}
+.movie-card-image img {
+  object-fit: cover;
+  transition: transform 0.5s;
+  width: 100%;
+  height: 100%;
+}
+
+.movie-card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  height: 38px;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.movie-card-info {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 12px;
+  height: 54px;
+}
+
+.movie-card-genre {
+  position: absolute;
+  top: 10px;
+  right: 6px;
+  background: var(--secondary-color);
+  background: linear-gradient(
+    180deg,
+    var(--secondary-color) 0%,
+    var(--secondary-color-dark) 50%
+  );
+  font-size: 12px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: 500;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+/* Select */
+
+.select-genre {
+  color: white;
+  border: none;
+  background-color: var(--green-color);
+}
+.select-genre:focus {
+  box-shadow: 0 0 0 0.25rem rgba(12, 101, 49, 0.25);
+}
+
+/* Modal */
+
+.modal {
+  backdrop-filter: blur(10px);
+}
+
+.modal-content {
+  color: white;
+  background: var(--primary-color);
+  background: linear-gradient(
+    90deg,
+    var(--primary-color-dark) 0%,
+    var(--primary-color) 65%
+  );
+  border: 0;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.modal-image {
+  width: 100%;
+}
+
+.modal .form-control {
+  background-color: transparent;
+  color: white;
+}
+
+.modal .form-select {
+  color: white;
+  background-color: transparent;
+}
+
+.modal .form-select option {
+  background: var(--primary-color);
+}
+
+/* Responsive */
+
+@media (max-width: 575.98px) {
+  .movie-card-image {
+    height: unset;
+  }
+}
