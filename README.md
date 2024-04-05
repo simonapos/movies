@@ -20,3 +20,14 @@ Movie Finder is a responsive movie landing page created using HTML, CSS, Bootstr
 - Use the dropdown to filter movies by genre.
 - Add movies.
 - Enjoy movie quotes fetched from the integrated API.
+
+## Additional Note
+
+### Problem
+The API used in the project didn't display data properly on GitHub Pages due to restrictions on certain types of requests, including those to external APIs, for security reasons.
+
+### Solution
+To bypass this restriction, I used a free proxy server. A proxy server acts as an intermediary between our website and the API, allowing us to fetch data from the API indirectly.
+
+### Implementation
+I integrated the proxy server into the project by modifying the API request URLs to go through the proxy server. This way, when the project is hosted on GitHub Pages, the requests are routed through the proxy server, enabling us to retrieve the data successfully. 
