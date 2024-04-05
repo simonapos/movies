@@ -1,7 +1,6 @@
 import movies from "./movies.js";
+import { getQuote } from "./quotes.js";
 
-const url = "https://quoteapi.pythonanywhere.com/random";
-const proxyUrl = "https://api.allorigins.win/get?url=";
 let filteredMovies = movies;
 let currentGenreFilter = "All";
 
@@ -34,7 +33,7 @@ function displayMovies(moviesData) {
 
 // Display movie information in the modal
 
-function displayMovieInfo(movie) {
+const displayMovieInfo = (movie) => {
   $("#movieInfoBody").html(`
     <div class="row gx-5">
         <div class="col-md-6 d-flex justify-content-center d-sm-block">
@@ -63,7 +62,6 @@ const displayFilteredMovies = () => {
     currentGenreFilter === "All"
       ? movies
       : movies.filter((movie) => movie.genre === currentGenreFilter);
-  filteredMovies = filteredMovies;
   displayMovies(filteredMovies);
 };
 
@@ -126,26 +124,3 @@ $(document).ready(function () {
     $("#addMovieForm").show();
   });
 });
-
-// Quote
-
-const updateQuote = (quote) =>
-  (document.getElementById("quote").innerHTML = quote);
-
-const getQuote = async () => {
-  try {
-    updateQuote("Loading...");
-    const res = await fetch(proxyUrl + url);
-    const data = await res.json();
-    const content = JSON.parse(data.contents);
-
-    if (content && content.Quotes && content.Quotes.length > 0) {
-      updateQuote(content.Quotes[0].quote);
-    } else {
-      updateQuote("No quotes found");
-    }
-  } catch (error) {
-    console.error({ error });
-    updateQuote("Sorry, no quote today :( Try again later");
-  }
-};
