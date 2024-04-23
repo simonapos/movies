@@ -27,7 +27,7 @@
   <body class="d-flex flex-column min-vh-100">
     <div class="container my-5">
       <h1 class="text-center h1 mb-4">Movie Finder</h1>
-      <p class="text-white text-center">
+      <p class="text-white text-center mb-0">
         Quote of the day: "<em id="quote"></em>"
       </p>
     </div>
@@ -54,7 +54,7 @@
             data-bs-target="#addMovieModal"
             id="addMovie"
           >
-            Add a Movie
+            Add Movie
           </button>
         </div>
       </div>
@@ -68,7 +68,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header py-4 px-5">
-            <h5 class="modal-title">Add a Movie</h5>
+            <h5 class="modal-title">Add Movie</h5>
             <button
               type="button"
               class="btn-close"
@@ -79,7 +79,11 @@
           <div class="modal-body px-5">
             <form id="addMovieForm">
               <div class="mb-3">
-                <label for="movieTitle" class="form-label">Title:*</label>
+                <label for="movieImage" class="form-label">Image:</label>
+                <input type="file" id="movieImage" class="form-control" accept="image/*">
+              </div>
+              <div class="mb-3">
+                <label for="movieTitle" class="form-label">Title: *</label>
                 <input
                   type="text"
                   class="form-control"
@@ -87,6 +91,7 @@
                   maxlength="250"
                   required
                 />
+                <div id="titleCounter" class="form-text">0 / 250 characters</div>
               </div>
               <div class="mb-3">
                 <label for="releaseYear" class="form-label"
@@ -102,7 +107,7 @@
                 />
               </div>
               <div class="mb-3">
-                <label for="description" class="form-label">Description:*</label>
+                <label for="description" class="form-label">Description: *</label>
                 <textarea
                   class="form-control"
                   id="description"
@@ -110,9 +115,10 @@
                   maxlength="500"
                   required
                 ></textarea>
+                <div id="descriptionCounter" class="form-text">0 / 500 characters</div>
               </div>
               <div class="mb-3">
-                <label for="genre" class="form-label">Genre:*</label>
+                <label for="genre" class="form-label">Genre: *</label>
                 <select id="genre" class="form-select" required>
                   <option value="">Select Genre</option>
                   <option value="Action">Action</option>

@@ -65,13 +65,15 @@ const displayFilteredMovies = () => {
   displayMovies(filteredMovies);
 };
 
+//Document Ready
+
 $(document).ready(function () {
   displayMovies(movies);
   getQuote();
 
   $("#moviesContainer").on("click", ".movie-card", function () {
     const index = $(this).attr("id");
-    displayMovieInfo(filteredMovies[Number(index)]);
+    displayMovieInfo(filteredMovies[index]);
   });
 
   $("#filterGenre").change(function () {
@@ -81,43 +83,59 @@ $(document).ready(function () {
 
   // Add new movie
 
+  $("#movieTitle").on("input", function() {
+    const maxLength = $(this).attr("maxlength");
+    const currentLength = $(this).val().length;
+    $("#titleCounter").text(currentLength + " / " + maxLength + " characters");
+  });
+
+  $("#description").on("input", function() {
+    const maxLength = $(this).attr("maxlength");
+    const currentLength = $(this).val().length;
+    $("#descriptionCounter").text(currentLength + " / " + maxLength + " characters"); 
+  });
+
   $("#addMovieForm").submit(function (event) {
     event.preventDefault();
     const title = $("#movieTitle").val().trim();
     const releaseYear = $("#releaseYear").val().trim();
     const description = $("#description").val().trim();
-    const genre = $("#genre").val().trim();
-    const image = "images/film.jpeg";
+    const genre = $("#genre").val();
+    const image = ($("#movieImage")[0].files.length > 0) ? URL.createObjectURL($("#movieImage")[0].files[0]) : "images/film.jpeg";
 
-    if (title && releaseYear && description && genre) {
-      const newMovie = {
-        image: image,
-        title: title,
-        year: releaseYear,
-        description: description,
-        genre: genre,
-      };
-      movies.unshift(newMovie);
-      displayFilteredMovies();
-      $("#addMovieForm")[0].reset();
+    addMovie(title, releaseYear, description, genre, image);
+    function addMovie(title, releaseYear, description, genre, image) {
+      if (title && releaseYear && description && genre) {
+        const newMovie = {
+          image: image,
+          title: title,
+          year: releaseYear,
+          description: description,
+          genre: genre,
+        };
+        movies.unshift(newMovie);
+        displayFilteredMovies();
+        $("#addMovieForm")[0].reset();
 
-      $("#addMovieForm").hide();
+        $("#addMovieForm").hide();
 
-      $("#addMovieForm").after(
-        '<div id="successMessage" class="d-flex flex-column justify-content-center align-items-center my-5"><h3 class="mb-5"> Movie added successfully!</h3> <button id="addAnotherBtn" class="btn btn-orange">Add Another Movie</button></div>'
-      );
+        $("#addMovieForm").after(
+          '<div id="successMessage" class="d-flex flex-column justify-content-center align-items-center my-5"><h3 class="mb-5"> Movie added successfully!</h3> <button id="addAnotherBtn" class="btn btn-orange">Add Another Movie</button></div>'
+        );
 
-      $("#addAnotherBtn").click(function () {
-        $("#successMessage").remove();
-        $("#addMovieForm").show();
-      });
-    } else {
-      alert("Please fill in all fields.");
+        $("#addAnotherBtn").click(function () {
+          $("#successMessage").remove();
+          $("#addMovieForm").show();
+        });
+      } else {
+        alert("Please fill in all fields.");
+      }
     }
   });
 
   $("#addMovieModal").on("hidden.bs.modal", function () {
     $("#successMessage").remove();
+     $("#addMovieForm")[0].reset();
   });
 
   $("#addMovie").click(function () {

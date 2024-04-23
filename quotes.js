@@ -2,7 +2,7 @@ const url = "https://quoteapi.pythonanywhere.com/random";
 const proxyUrl = "https://api.allorigins.win/get?url=";
 
 const updateQuote = (quote) =>
-  (document.getElementById("quote").innerHTML = quote);
+  $("#quote").html(quote);
 
 export const getQuote = async () => {
   try {
@@ -17,7 +17,6 @@ export const getQuote = async () => {
       updateQuote("No quotes found");
     }
   } catch (error) {
-    console.error({ error });
     updateQuote("Sorry, no quote today :( Try again later");
   }
 };
