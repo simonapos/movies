@@ -120,7 +120,7 @@ $(document).ready(function () {
         $("#addMovieForm").hide();
 
         $("#addMovieForm").after(
-          '<div id="successMessage" class="d-flex flex-column justify-content-center align-items-center my-5"><h3 class="mb-5"> Movie added successfully!</h3> <button id="addAnotherBtn" class="btn btn-orange">Add Another Movie</button></div>'
+          '<div id="successMessage" class="d-flex flex-column justify-content-center align-items-center my-5"><h3 class="mb-5 text-center"> Movie added successfully!</h3> <button id="addAnotherBtn" class="btn btn-orange">Add Another Movie</button></div>'
         );
 
         $("#addAnotherBtn").click(function () {
