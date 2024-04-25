@@ -117,6 +117,9 @@ $(document).ready(function () {
         displayFilteredMovies();
         $("#addMovieForm")[0].reset();
 
+        $("#titleCounter").text("0 / " + $("#movieTitle").attr("maxlength") + " characters");
+        $("#descriptionCounter").text("0 / " + $("#description").attr("maxlength") + " characters");
+
         $("#addMovieForm").hide();
 
         $("#addMovieForm").after(
@@ -136,6 +139,8 @@ $(document).ready(function () {
   $("#addMovieModal").on("hidden.bs.modal", function () {
     $("#successMessage").remove();
      $("#addMovieForm")[0].reset();
+     $("#titleCounter").text("0 / " + $("#movieTitle").attr("maxlength") + " characters");
+     $("#descriptionCounter").text("0 / " + $("#description").attr("maxlength") + " characters");
   });
 
   $("#addMovie").click(function () {
